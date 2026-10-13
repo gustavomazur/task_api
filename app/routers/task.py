@@ -17,8 +17,7 @@ def create_task(task: schemas.TaskCreate, db: Session = Depends(get_db)):
     
     db.add(new_task)
     db.commit()
-    db.refresh(new_task) # Pega o ID gerado pelo banco
-    
+    db.refresh(new_task)
     return new_task
 
 @router.get("/", status_code=status.HTTP_200_OK, response_model=List[schemas.TaskResponse])
